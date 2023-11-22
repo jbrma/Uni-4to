@@ -1,0 +1,20 @@
+﻿  practica2.cpp
+C:\Users\jorge\Documents\Uni - 4to\DA\025\PriorityQueue.h(35,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jorge\Documents\Uni - 4to\DA\025\PriorityQueue.h(33): message : while compiling class template member function 'PriorityQueue<Candidatura,std::less<T>>::PriorityQueue(const std::vector<Candidatura,std::allocator<Candidatura>> &,Comparator)'
+          with
+          [
+              T=Candidatura,
+              Comparator=std::less<Candidatura>
+          ]
+C:\Users\jorge\Documents\Uni - 4to\DA\025\practica2.cpp(39): message : see reference to function template instantiation 'PriorityQueue<Candidatura,std::less<T>>::PriorityQueue(const std::vector<Candidatura,std::allocator<Candidatura>> &,Comparator)' being compiled
+          with
+          [
+              T=Candidatura,
+              Comparator=std::less<Candidatura>
+          ]
+C:\Users\jorge\Documents\Uni - 4to\DA\025\practica2.cpp(39): message : see reference to class template instantiation 'PriorityQueue<Candidatura,std::less<T>>' being compiled
+          with
+          [
+              T=Candidatura
+          ]
+  025.vcxproj -> C:\Users\jorge\Documents\Uni - 4to\DA\025\Debug\025.exe

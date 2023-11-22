@@ -1,0 +1,8 @@
+3.141592 -82 +6.7 -18 -2.18E-2 +4E+2 velocidad while if a + <> @ #      3.14E2	-21
+
+siendo
+euros = 567,
+centimos1 = 456.29,
+centimos2 = 2.0E3
+evalua
+166.386 * euros + 1.66386 * (centimos1 + centimos2)
