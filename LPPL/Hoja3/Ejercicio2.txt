@@ -1,0 +1,1 @@
+En el ejercicio 2, el signo "=" se representa con "assign", ya que Calgary no lo admite

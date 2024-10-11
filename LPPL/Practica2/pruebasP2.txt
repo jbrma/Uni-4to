@@ -1,0 +1,7 @@
+siendo
+euros = 567,
+centimos1 = 456.29,
+<centimos2 , centimos3> = <2.0E3, 2 * euros>
+
+evalua
+166.386 * euros + 1.66386 * (centimos1 + centimos2 + centimos3)

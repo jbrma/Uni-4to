@@ -1,0 +1,256 @@
+{
+  "columns": [
+    {
+      "minWidth": 40,
+      "download": false,
+      "formatter": "rowSelection",
+      "titleFormatter": "rowSelection",
+      "resizable": true,
+      "headerSort": false,
+      "width": 51
+    },
+    {
+      "field": "Region Name",
+      "title": "Region Name",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "string",
+      "headerSort": true,
+      "width": 140
+    },
+    {
+      "field": "Country Name",
+      "title": "Country Name",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "string",
+      "headerSort": true,
+      "width": 146
+    },
+    {
+      "field": "Year",
+      "title": "Year",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "string",
+      "headerSort": true,
+      "width": 82
+    },
+    {
+      "field": "Sex",
+      "title": "Sex",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "string",
+      "headerSort": true,
+      "width": 77
+    },
+    {
+      "field": "0 Year",
+      "title": "0 Year",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 93
+    },
+    {
+      "field": "1-4 Years",
+      "title": "1-4 Years",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 112
+    },
+    {
+      "field": "5-9 Years",
+      "title": "5-9 Years",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 112
+    },
+    {
+      "field": "10-14 Years",
+      "title": "10-14 Years",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 127
+    },
+    {
+      "field": "15-19 Years",
+      "title": "15-19 Years",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 127
+    },
+    {
+      "field": "20-24 Years",
+      "title": "20-24 Years",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 127
+    },
+    {
+      "field": "25-29 Years",
+      "title": "25-29 Years",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 127
+    },
+    {
+      "field": "30-34 Years",
+      "title": "30-34 Years",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 127
+    },
+    {
+      "field": "35-39 Years",
+      "title": "35-39 Years",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 127
+    },
+    {
+      "field": "40-44 Years",
+      "title": "40-44 Years",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 127
+    },
+    {
+      "field": "45-49 Years",
+      "title": "45-49 Years",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 127
+    },
+    {
+      "field": "50-54 Years",
+      "title": "50-54 Years",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 127
+    },
+    {
+      "field": "55-59 Years",
+      "title": "55-59 Years",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 127
+    },
+    {
+      "field": "60-64 Years",
+      "title": "60-64 Years",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 127
+    },
+    {
+      "field": "65-69 Years",
+      "title": "65-69 Years",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 127
+    },
+    {
+      "field": "70-74 Years",
+      "title": "70-74 Years",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 127
+    },
+    {
+      "field": "75-79 Years",
+      "title": "75-79 Years",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 127
+    },
+    {
+      "field": "80-84 Years",
+      "title": "80-84 Years",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 127
+    },
+    {
+      "field": "85+ Years",
+      "title": "85+ Years",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 116
+    },
+    {
+      "field": "Unknown Age",
+      "title": "Unknown Age",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 143
+    },
+    {
+      "field": "No of Suicides",
+      "title": "No of Suicides",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 145
+    },
+    {
+      "field": "Percentage of cause-specific deaths out of total deaths",
+      "title": "Percentage of cause-specific deaths out of total deaths",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 394
+    },
+    {
+      "field": "Death rate per 100 000 population",
+      "title": "Death rate per 100 000 population",
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true,
+      "width": 269
+    }
+  ]
+}

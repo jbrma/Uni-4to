@@ -1,0 +1,75 @@
+__asm volatile(
+"	li $4,0x4000 \n" //total iteraciones del bucle
+"	li $5,0x10 \n"	//valor 16 para itererar elementos
+"	li $9,0x810 \n" //valor 128x16 para acceder a la siguiente fila
+"	move $6,%[input] \n" //bases de los vectores
+"	move %7,%[filter] \n"
+"	move %8,%[output] \n"
+"	ld.h $w9,0($7) \n" //cargamos filter[0][0]
+"	dadd $7,$7,$5 \n" //sumamos 16 para obtener posicion del siguiente
+"	ld.h $w10,0($7) \n" //cargamos filter[0][1]
+"	dadd $7,$7,$5 \n"
+"	ld.h $w11,0($7) \n"
+"	dadd $7,$7,$5 \n"
+"	ld.h $w12,0($7) \n"
+"loop:	dadd $12,$6,$9 \n" //128x16 + posicion actual para bajar de fila
+"	ld.h $w1,0($6) \n" //cargamos input[i][j]
+"	dadd $10,$6,$5 \n" //obtenemos posicion del siguiente elemento
+"	ld.h $w2,0($10) \n" //cargamos input[i][j + 1]
+"	ld.h $w3,0($12) \n" //cargamos input[i + 1][j]
+"	dadd $11,$12,$5 \n"
+"	ld.h $w4,0($10) \n" //cargamos input[i + 1][j+1]
+"	mulv.h $w5,$w1,$w9 \n" //input[i][j] * filter[0][0]
+"	mulv.h $w6,$w2,$w10 \n" //input[i][j + 1] * filter[0][1]
+"	mulv.h $w7,$w3,$w11 \n" //input[i + 1][j] * filter[1][0]
+"	mulv.h $w8,$w4,$w12 \n" //input[i + 1][j + 1] * filter[1][1];
+"	addv.h $w13,$w5,$w6 \n"
+"	addv.h $w14,$w7,$w8 \n"
+"	addv.h $w15,$w13,$w14 \n" //suma total
+"	st.h $w15,0($8) \n" //almacenamos en memroia output[i][j] = sumatotal
+"	dadd $6,$6,$5 \n" //aumentamos la base de input
+"	dadd $8,$8,$5 \n" //aumentamos la base de output
+"	sub $4,$4,$5 \n" //restamos un elemento (16) al contador del bucle
+"	bgtz $4,loop \n" //miramos si cont==0 (todos los elementos calculados)
+: 
+: [input] "i" (input)
+: [filter] "f" (filter)
+: [output] "o" (output)
+: "memory","$4","$5","$6","$7","$8","$9","$10"
+);
+
+
+__asm volatile(
+"	li $4,0x4000 \n" //total iteraciones del bucle
+"	li $5,0x10 \n"	//valor 16 para itererar elementos
+"	li $9,0x810 \n" //valor 128x16 para acceder a la siguiente fila
+"	move $6,%[input] \n" //bases de los vectores
+"	move %7,%[filter] \n"
+"	move %8,%[output] \n"
+"	ld.h $w9,0($7) \n" //cargamos filter[0][0]
+"	ld.h $w10,2($7) \n" //cargamos filter[0][1] usando desplazamiento de 2 bytes
+"	ld.h $w11,4($7) \n" 
+"	ld.h $w12,6($7) \n"
+"loop:	dadd $12,$6,$9 \n" //128x16 + posicion actual para bajar de fila
+"	ld.h $w1,0($6) \n" //cargamos input[i][j]
+"	ld.h $w2,2($6) \n" //cargamos input[i][j + 1] offset de 2 bytes
+"	ld.h $w3,0($12) \n" //cargamos input[i + 1][j]
+"	ld.h $w4,2($12) \n" //cargamos input[i + 1][j+1]
+"	mulv.h $w5,$w1,$w9 \n" //input[i][j] * filter[0][0]
+"	mulv.h $w6,$w2,$w10 \n" //input[i][j + 1] * filter[0][1]
+"	mulv.h $w7,$w3,$w11 \n" //input[i + 1][j] * filter[1][0]
+"	mulv.h $w8,$w4,$w12 \n" //input[i + 1][j + 1] * filter[1][1];
+"	addv.h $w13,$w5,$w6 \n"
+"	addv.h $w14,$w7,$w8 \n"
+"	addv.h $w15,$w13,$w14 \n" //suma total
+"	st.h $w15,0($8) \n" //almacenamos en memroia output[i][j] = sumatotal
+"	dadd $6,$6,$5 \n" //aumentamos la base de input
+"	dadd $8,$8,$5 \n" //aumentamos la base de output
+"	sub $4,$4,$5 \n" //restamos un elemento (16) al contador del bucle
+"	bgtz $4,loop \n" //miramos si cont==0 (todos los elementos calculados)
+: 
+: [input] "i" (input)
+: [filter] "f" (filter)
+: [output] "o" (output)
+: "memory","$4","$5","$6","$7","$8" //hemos usado dos registros menos y 5 instrucc menos
+);

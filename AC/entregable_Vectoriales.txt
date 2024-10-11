@@ -1,0 +1,83 @@
+// JORGE BRAVO MATEOS
+
+/* 
+
+for (int i = 0; i < MATRIX_SIZE - 1; i++) {
+
+    for (int j = 0; j < MATRIX_SIZE - 1; j++) {
+
+        output[i][j] = input[i][j] * filter[0][0] +
+
+                        input[i][j + 1] * filter[0][1] +
+
+                        input[i + 1][j] * filter[1][0] +
+
+                        input[i + 1][j + 1] * filter[1][1];
+
+    }
+
+}
+
+
+Pseudocódigo:
+
+Para cada fila i de la matriz de entrada:
+    Para cada columna j de la matriz de entrada:
+        output[i][j] = input[i][j] * filter[0][0] +
+                       input[i][j + 1] * filter[0][1] +
+                       input[i + 1][j] * filter[1][0] +
+                       input[i + 1][j + 1] * filter[1][1]
+*/        
+        
+        
+        //cada elemento ocupa 16 bits
+        //cada registro ocupa 128 bits
+        //cada fila ocupa 16*128 = 2048
+        //el total de iteraciones es 128*128 = 16384 elementos
+        li $2, 16384
+
+        // con fill.h $wX, $X se rellena el registro wX con los valores X
+        // con dadd pasamos al siguiente elemento, sumandole 16b
+
+        move $7, %[filter]// Carga la dirección base de la matriz filter
+        move $8, %[input] // Carga la dirección base de la matriz de entrada
+        move $9, %[output] // Carga la dirección base de la matriz de salida
+
+        li $3, 0($7) // filter[0][0] = filter[1][0]
+        fill.h $w3, $3
+        dadd $7, $7, 16
+
+        li $4, 0($7) // filter[0][1] =filter[1][1]
+        fill.h $w4, $4
+
+
+LOOP:   
+        move $10, $8 // Establecemos $10 en la dirección de la fila de entrada actual %[input]
+
+        ld.h $w10, 0($10) // input[0][0]...input[0][7]
+        dadd $10, $10, 16
+
+        ld.h $w11, 0($10) // input[0][1]...input[0][8]
+        dadd $10, $10, 2048
+
+        ld.h $w12, 0($10) // input[1][0]...input[1][7]
+        dadd $10, $10, 16
+        
+        ld.h $w13, 0($10) // input[1][1]...input[1][8]
+
+        mulv.h $w14, $w10,  $w3 // input[0][0]...input[0][7] * filter[0][0]
+        mulv.h $w15, $w11,  $w4 // input[0][1]...input[0][8] * filter[0][1]
+        mulv.h $w16, $w12,  $w3 // input[1][0]...input[1][7] * filter[1][0]
+        mulv.h $w17, $w13,  $w4 // input[1][1]...input[1][8] * filter[1][1]
+
+        addv.h $w14, $w14, $w15
+        addv.h $w14, $w14, $w16
+        addv.h $w14, $w14, $w17
+
+        st.h $w14, 0($9) // la suma total se guarda en la matriz de salida
+
+        dadd $9, $9, 128 // movemos la dirección 8 elementos
+        dadd $8, $8, 128 
+
+        sub $2, $2, 128 // se restan las iteraciones hasta ahora
+        benez $2, LOOP // si el total de iteraciones es > 0, saltamos

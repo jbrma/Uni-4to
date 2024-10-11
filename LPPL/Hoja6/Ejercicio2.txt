@@ -1,0 +1,2 @@
+z = 1;
+while ( z == 1 ) do { if ( i >= x + y ) then { x = x + y ; } else { if ( i != x * y ) then { x = x + y ; } else { z = 0 ; } } }

@@ -1,0 +1,1 @@
+if ( i < x + y ) then { if ( i == x * y ) then { x = x + y ; } else { x = x * y ; } } else { x = x * y ; }
